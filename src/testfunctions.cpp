@@ -1,5 +1,5 @@
 #include "testfunctions.h"
-
+#include <fstream> 
 /*************************************/
 /*** Burred segments decomposition ***/
 /*************************************/
@@ -685,10 +685,11 @@ vector<vector<MaximalBlurredSegment> > modifiedTangentCoverCurveDecomposition(co
             cout<<"meaningThicknessElement : "<<*it<<endl;
         if(filename != NULL)
         {
-            if(eps)
+            /*if(eps)
                 sprintf(fileAdaptMT,"%s_MATC_Step1_%zu.eps",filename,it_contour);
             else
                 sprintf(fileAdaptMT,"%s_MATC_Step1_%zu.svg",filename,it_contour);
+            */ 
             drawMultiThicknessCover(aContour.at(it_contour),vecMT.at(it_contour),fileAdaptMT,eps);
         }
         
@@ -735,10 +736,11 @@ vector<vector<MaximalBlurredSegment> > modifiedTangentCoverCurveDecomposition(co
         }
         if(filename != NULL)
         {
-            if(eps)
+            /*if(eps)
                 sprintf(fileAdaptMT,"%s_MATC_Step3_%zu.eps",filename,it_contour);
             else
                 sprintf(fileAdaptMT,"%s_MATC_Step3_%zu.svg",filename,it_contour);
+            */
             drawMultiThicknessCover(aContour.at(it_contour),vecMTmodified,fileAdaptMT,eps);
         }
         
@@ -877,10 +879,11 @@ vector<vector<MaximalBlurredSegment> > modifiedTangentCoverCurveDecomposition(co
         }
         if(filename!=NULL)
         {
-            if(eps)
+            /*if(eps)
                 sprintf(fileAdaptMT,"%s_MATC_Step4_%zu.eps",filename,it_contour);
             else
                 sprintf(fileAdaptMT,"%s_MATC_Step4_%zu.svg",filename,it_contour);
+            */
             drawMultiThicknessCoverColor(aContour,it_contour,adaptiveMeaningThicknessTangentCover,fileAdaptMT,eps);
         }
         adaptiveTangentCover.push_back(oneAdaptiveTangentCover);
@@ -1001,10 +1004,20 @@ vector<vector<Point> > testDominantPointOnShape(const vector<vector<MaximalBlurr
         }
         cout<<"===> Num of dominant points is "<<DP.size()<<endl;
         /* calcul point dominant */
-
         vecDP.push_back(DP);
         vecExtremityPoint.push_back(extremityPoint);
         vecCommonPoint.push_back(commonPoint);
+		// Print Dominant Points
+        /*cout << "Dominant Points:" << endl;
+        for (size_t it_contour = 0; it_contour < DP.size(); it_contour++) {
+            cout << "Contour " << it_contour << ": ";
+            for (const auto& point : DP.at(it_contour)) {
+                cout << "(" << point << ") ";
+            }
+            cout << endl;
+        } */
+
+
     }
 
     if(filename!=NULL)
@@ -1174,6 +1187,15 @@ vector<vector<Point> > testDominantPointSelection(const vector<vector<Point> >& 
         /* Push back the last element */
         cout<<"===> New num of dominant points is "<<selectedDP.size()<<endl;
         vecSelectedDP.push_back(selectedDP);
+		// Print the selected Dominant Points
+        cout << "Selected Dominant Points:" << endl;
+        /*for (size_t it_contour = 0; it_contour < selectedDP.size(); it_contour++) {
+            cout << "Contour " << it_contour << ": ";
+            for (const auto& point : selectedDP.at(it_contour)) {
+                cout << "(" << point << endl;
+            }
+            cout << endl;
+        } */ 
     }
 
     if(filename!=NULL)
@@ -1379,6 +1401,17 @@ vector<vector<Point> > testDominantPointSelection(const vector<vector<Point> >& 
         }
         cout<<"===> New num of dominant points is "<<selectedDP_prev.size()<<endl;
         vecSelectedDPNew.push_back(selectedDP);
+		// Print the selected Dominant Points
+        cout << "Selected Dominant Points:" << endl;
+        /*for (size_t it_contour = 0; it_contour < selectedDP_prev.size(); it_contour++) {
+            cout << "Contour " << it_contour << ": ";
+            for (const auto& point : selectedDP_prev.at(it_contour)) {
+                cout  << point << " ";
+            }
+            cout << endl;
+        } */
+
+ 
     }
     /* Quasi linear DP remove */
 

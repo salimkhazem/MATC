@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
     string ImaGeneDIR = vm["imageneDir"].as<std::string>();
     fileContour << baseInputName ;
     vector<vector<Point> > aContour = readFile(fileContour.str().c_str());
-    cout<<fileContour.str()<<endl;
+    //cout<<fileContour.str()<<endl;
     /********** read data ***************/
     
     std::stringstream instruction;

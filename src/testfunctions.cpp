@@ -891,10 +891,11 @@ vector<vector<MaximalBlurredSegment> > modifiedTangentCoverCurveDecomposition(co
     
     if(filename!=NULL)
     {
-        if(eps)
+        /*if(eps)
             sprintf(fileAdaptMT,"%s_MATC.eps",filename);
         else
             sprintf(fileAdaptMT,"%s_MATC.svg",filename);
+        */ 
         drawMultiThicknessCover(aContour,adaptiveTangentCover,fileAdaptMT,eps);
     }
     return adaptiveTangentCover;

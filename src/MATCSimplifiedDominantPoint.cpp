@@ -208,7 +208,7 @@ int main(int argc, char *argv[])
             }
         }
         sdpFile.close();
-        std::cout << "Selected Dominant Points saved to selected_dominant_points.sdp" << std::endl;
+        //std::cout << "Selected Dominant Points saved to selected_dominant_points.sdp" << std::endl;
     } else {
         std::cerr << "Error: Unable to open selected_dominant_points.sdp for writing." << std::endl;
         return -1;

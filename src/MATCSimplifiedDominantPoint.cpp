@@ -189,7 +189,10 @@ int main(int argc, char *argv[])
     isClosed=true;
     vector<vector<Point> > newDP=testDominantPointSelection(DP,indexDP,aContour,10.0*M_PI/180.0,isClosed,filenameDPnew.str().c_str(),verbose,eps); // ISE * ANGLE
     // Declare le nom du fichier 
-    std::ofstream sdpFile("selected_dominant_points.sdp");
+    std::stringstream output;
+    output << outDir << "_selected_dominant_point.sdp"; 
+
+    std::ofstream sdpFile(output.str());
 
     for (size_t it_contour = 0; it_contour < newDP.size(); it_contour++) {
         std::cout << "Contour " << ": ";

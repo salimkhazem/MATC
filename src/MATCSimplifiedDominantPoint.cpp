@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream> 
+#include <sstream> 
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -183,9 +185,31 @@ int main(int argc, char *argv[])
     
     /********** selection of dominant points ***************/
     std::stringstream filenameDPnew;
-    filenameDPnew << outDir << (eps ? "_DPnew_MATC.eps" :"_DPnew_MATC.svg");
+    filenameDPnew << outDir << (eps ? "_DPnew_MATC.eps" :"_DPnew_MATC____test.svg");
     isClosed=true;
     vector<vector<Point> > newDP=testDominantPointSelection(DP,indexDP,aContour,10.0*M_PI/180.0,isClosed,filenameDPnew.str().c_str(),verbose,eps); // ISE * ANGLE
+    // Declare le nom du fichier 
+    std::ofstream sdpFile("selected_dominant_points.sdp");
+
+    for (size_t it_contour = 0; it_contour < newDP.size(); it_contour++) {
+        std::cout << "Contour " << ": ";
+        for (const auto& point : newDP.at(it_contour)) {
+            std::cout << point << " ";
+        }
+        std::cout << std::endl;
+    }
+    if (sdpFile.is_open()) {
+        for (size_t it_contour = 0; it_contour < newDP.size(); it_contour++) {
+            for (const auto& point : newDP.at(it_contour)) {
+                sdpFile << point << std::endl;
+            }
+        }
+        sdpFile.close();
+        std::cout << "Selected Dominant Points saved to selected_dominant_points.sdp" << std::endl;
+    } else {
+        std::cerr << "Error: Unable to open selected_dominant_points.sdp for writing." << std::endl;
+        return -1;
+    }
     
     if(verbose)
         cout<<"File: "<<fileContour.str()<<endl;

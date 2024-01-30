@@ -185,7 +185,7 @@ int main(int argc, char *argv[])
     
     /********** selection of dominant points ***************/
     std::stringstream filenameDPnew;
-    filenameDPnew << outDir << (eps ? "_DPnew_MATC.eps" :"_DPnew_MATC____test.svg");
+    //filenameDPnew << outDir << (eps ? "_DPnew_MATC.eps" :"_DPnew_MATC____test.svg");
     isClosed=true;
     vector<vector<Point> > newDP=testDominantPointSelection(DP,indexDP,aContour,10.0*M_PI/180.0,isClosed,filenameDPnew.str().c_str(),verbose,eps); // ISE * ANGLE
     // Declare le nom du fichier 

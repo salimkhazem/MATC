@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
     string ImaGeneDIR = vm["imageneDir"].as<std::string>();
     fileContour << baseInputName ;
     vector<vector<Point> > aContour = readFile(fileContour.str().c_str());
-    //cout<<fileContour.str()<<endl;
+    //cout<<"Test ; " << singleName <<endl;
     /********** read data ***************/
     
     std::stringstream instruction;
@@ -153,7 +153,7 @@ int main(int argc, char *argv[])
     cout<<"MATC DP detection"<<endl;
     vector<vector<Point> > DP;
     std::stringstream filenameDP;
-    filenameDP << outDir << (eps ? "_DP_MATC.eps" :"_DP_MATC.svg");
+    //filenameDP << outDir << (eps ? "_DP_MATC.eps" :"_DP_MATC.svg");
     // Version without seq of ANGLE ordering of burred segments
     DP=testDominantPointOnShape(tangentCorverSet,aContour,false,isClosed,filenameDP.str().c_str(),verbose,eps);
     
@@ -190,8 +190,8 @@ int main(int argc, char *argv[])
     vector<vector<Point> > newDP=testDominantPointSelection(DP,indexDP,aContour,10.0*M_PI/180.0,isClosed,filenameDPnew.str().c_str(),verbose,eps); // ISE * ANGLE
     // Declare le nom du fichier 
     std::stringstream output;
-    output << outDir << "_selected_dominant_point.sdp"; 
-
+    //output << outDir << "_selected_dominant_point.sdp"; 
+    output << outDir << ".sdp" ;  
     std::ofstream sdpFile(output.str());
 
     for (size_t it_contour = 0; it_contour < newDP.size(); it_contour++) {
